@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import facebookIcon from "../assets/icons/facebook.png";
-import twitterIcon from "../assets/icons/twitter.png";
-import instagramIcon from "../assets/icons/instagram.png";
-import githubIcon from "../assets/icons/github.png";
-import linkedinIcon from "../assets/icons/linkedin.png";
+import { Facebook, Twitter, Instagram, GitHub, LinkedIn } from '@mui/icons-material';
 
 const Container = styled.footer`
   padding: 2rem 4rem;
@@ -25,7 +21,7 @@ const SocialContainer = styled.div`
   gap: 15px;
 `;
 
-const IconLink = styled.a`
+const IconLink = styled.a<{ platform?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,15 +30,28 @@ const IconLink = styled.a`
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  transition: transform 0.3s ease;
-
-  img {
-    width: 24px;
-    height: 24px;
-  }
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 24px;
 
   &:hover {
     transform: scale(1.15);
+    ${props => {
+      switch (props.platform) {
+        case 'facebook':
+          return 'color: #1877F2;'; // Facebook blue
+        case 'twitter':
+          return 'color: #1DA1F2;'; // Twitter blue
+        case 'instagram':
+          return 'background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white;';
+        case 'github':
+          return 'color: #6e5494;'; // GitHub purple
+        case 'linkedin':
+          return 'color: #0A66C2;'; // LinkedIn blue
+        default:
+          return 'color: white;';
+      }
+    }}
   }
 `;
 
@@ -51,24 +60,49 @@ export const Footer: React.FC = () => (
     <p>&copy; {new Date().getFullYear()} Donny. All rights reserved.</p>
 
     <SocialContainer>
-      <IconLink href="https://facebook.com/imdonnyx" target="_blank" rel="noopener noreferrer">
-        <img src={""} alt="Facebook" />
+      <IconLink 
+        href="https://facebook.com/imdonnyx" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        platform="facebook"
+      >
+        <Facebook sx={{ fontSize: 24 }} />
       </IconLink>
 
-      <IconLink href="https://twitter.com/imdonnyxx" target="_blank" rel="noopener noreferrer">
-        <img src={""} alt="Twitter" />
+      <IconLink 
+        href="https://twitter.com/imdonnyxx" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        platform="twitter"
+      >
+        <Twitter sx={{ fontSize: 24 }} />
       </IconLink>
 
-      <IconLink href="https://instagram.com/imdonnyx" target="_blank" rel="noopener noreferrer">
-        <img src={""} alt="Instagram" />
+      <IconLink 
+        href="https://instagram.com/imdonnyx" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        platform="instagram"
+      >
+        <Instagram sx={{ fontSize: 24 }} />
       </IconLink>
 
-      <IconLink href="https://github.com/imdonnix" target="_blank" rel="noopener noreferrer">
-        <img src={""} alt="GitHub" />
+      <IconLink 
+        href="https://github.com/imdonnix" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        platform="github"
+      >
+        <GitHub sx={{ fontSize: 24 }} />
       </IconLink>
 
-      <IconLink href="https://www.linkedin.com/in/donn-darryl-dimayuga-370929150" target="_blank" rel="noopener noreferrer">
-        <img src={""} alt="LinkedIn" />
+      <IconLink 
+        href="https://www.linkedin.com/in/donn-darryl-dimayuga-370929150" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        platform="linkedin"
+      >
+        <LinkedIn sx={{ fontSize: 24 }} />
       </IconLink>
     </SocialContainer>
   </Container>
