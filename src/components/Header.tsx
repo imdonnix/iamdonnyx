@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { useTranslations } from "../utils/translations/translations";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -38,6 +39,8 @@ const Menu = styled.div`
 `;
 
 export const Header: React.FC = () => {
+  const { t } = useTranslations();
+  
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
     const el = document.querySelector(id);
@@ -51,13 +54,13 @@ export const Header: React.FC = () => {
       <GlobalStyle />
       <Nav>
         <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
-          <Logo>Donny</Logo>
+          <Logo>{t.header.Donny}</Logo>
         </a>
         <Menu>
-          <a href="#services" onClick={(e) => handleScroll(e, "#services")}>Services</a>
-          <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")}>Portfolio</a>
-          <a href="#about" onClick={(e) => handleScroll(e, "#about")}>About</a>
-          <a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>Contact</a>
+          <a href="#services" onClick={(e) => handleScroll(e, "#services")}>{t.header.services}</a>
+          <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")}>{t.header.portfolio}</a>
+          <a href="#about" onClick={(e) => handleScroll(e, "#about")}>{t.header.about}</a>
+          <a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>{t.header.contact}</a>
         </Menu>
       </Nav>
     </>
