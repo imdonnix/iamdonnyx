@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useTranslations } from "../utils/translations/translations";
 
 const Section = styled.section`
   padding: 6rem 4rem;
@@ -110,6 +111,7 @@ const Button = styled.button`
 `;
 
 export const Contact: React.FC = () => {
+  const { t } = useTranslations();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -125,13 +127,13 @@ export const Contact: React.FC = () => {
 
   return (
     <Section id="contact">
-      <Title>Contact Me</Title>
+      <Title>{t.contact.title}</Title>
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           <Input
             type="text"
             name="name"
-            placeholder="Your Name"
+            placeholder={t.contact.nameLabel}
             value={form.name}
             onChange={handleChange}
             required
@@ -139,7 +141,7 @@ export const Contact: React.FC = () => {
           <Input
             type="email"
             name="email"
-            placeholder="Your Email"
+            placeholder={t.contact.emailLabel}
             value={form.email}
             onChange={handleChange}
             required
@@ -147,19 +149,19 @@ export const Contact: React.FC = () => {
           <Textarea
             name="message"
             rows={5}
-            placeholder="Your Message"
+            placeholder={t.contact.messageLabel}
             value={form.message}
             onChange={handleChange}
             required
           />
-          <Button type="submit">Send Message</Button>
+          <Button type="submit">{t.contact.sendButton}</Button>
         </Form>
 
         <ContactInfo>
-          <h3>Contact Information</h3>
-          <p><strong>Phone:</strong> +639 17244 6461</p>
-          <p><strong>Email:</strong> dimayugadonndarryl@gmail.com</p>
-          <p><strong>Location:</strong> Tinga Itaas, Batangas City, Philippines</p>
+          <h3>{t.contact.contactInfoTitle}</h3>
+          <p><strong>{t.contact.phoneLabel}</strong> {t.contact.phone}</p>
+          <p><strong>{t.contact.emailInfo}</strong> {t.contact.emailAddress}</p>
+          <p><strong>{t.contact.locationLabel}</strong> {t.contact.location}</p>
 
           <MapWrapper>
             <iframe

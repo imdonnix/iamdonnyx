@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useTranslations } from "../utils/translations/translations";
 
 const Section = styled.section`
     padding: 6rem 4rem;
@@ -182,6 +183,7 @@ const Modal: React.FC<{
 };
 
 export const Portfolio: React.FC = () => {
+    const { t } = useTranslations();
     const [modalOpen, setModalOpen] = useState(false);
     const [modalImg, setModalImg] = useState("");
     const [modalAlt, setModalAlt] = useState("");
@@ -203,7 +205,7 @@ export const Portfolio: React.FC = () => {
 
     return (
         <Section id="portfolio">
-            <Title>Projects I've handled so far</Title>
+            <Title>{t.portfolio.title}</Title>
             <Grid>
                 {projects.map((project, idx) => (
                     <ProjectCard

@@ -6,8 +6,10 @@ import { Portfolio } from "../components/Portfolio";
 import { About } from "../components/About";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
+import { useTranslations } from "../utils/translations/translations";
 
 export const Home: React.FC = () => {
+    const { t } = useTranslations();
     const [showButton, setShowButton] = useState(false);
 
     useEffect(() => {
@@ -50,9 +52,9 @@ export const Home: React.FC = () => {
                         transition: "transform 0.3s",
                         animation: "bounce 1s infinite"
                     }}
-                    aria-label="Scroll to top"
+                    aria-label={t.home.scrollToTopLabel}
                 >
-                    ↑
+                    
                 </button>
             )}
             <style>

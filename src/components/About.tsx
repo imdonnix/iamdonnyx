@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslations } from "../utils/translations/translations";
 
 const Section = styled.section`
   padding: 6rem 4rem;
@@ -57,8 +58,8 @@ const SkillsContainer = styled.div`
   gap: 0.6rem;
 `;
 
-const Skill = styled.span<{ bgColor: string }>`
-  background: ${(props) => props.bgColor};
+const Skill = styled.span`
+  background: #0077ff;
   color: #fff;
   padding: 0.5rem 1.2rem;
   border-radius: 20px;
@@ -83,85 +84,65 @@ const ResumeButton = styled.a`
   }
 `;
 
-// Random pastel colors generator
-const colors = [
-  "#ff6b6b",
-  "#6bcfff",
-  "#6bff95",
-  "#ffc36b",
-  "#b36bff",
-  "#6bfff3",
-  "#ffa6d5",
-  "#8aff6b",
-  "#6b9bff",
-  "#ffd76b",
-];
-
-const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
-
 const SkillBadge: React.FC<{ name: string }> = ({ name }) => (
-  <Skill bgColor={getRandomColor()}>{name}</Skill>
+  <Skill>{name}</Skill>
 );
 
-export const About: React.FC = () => (
-  <Section id="about">
-    <Title>About Me</Title>
-    <Text>
-      I am a passionate web developer specializing in React and TypeScript. I
-      focus on creating minimalist and functional designs that deliver clean,
-      modern, and user-friendly web experiences.
-    </Text>
+export const About: React.FC = () => {
+  const { t } = useTranslations();
 
-    <Title>Skills</Title>
-    <CardGrid>
-      <SkillCard>
-        <CardTitle>Frontend Development</CardTitle>
-        <SkillsContainer>
-          {["React.js", "TypeScript", "JavaScript", "HTML5", "CSS", "Tailwind CSS", "Ant Design", "Redux.js", "jQuery"].map(
-            (skill) => (
+  return (
+    <Section id="about">
+      <Title>{t.about.title}</Title>
+      <Text>{t.about.description}</Text>
+
+      <Title>{t.about.skillsTitle}</Title>
+      <CardGrid>
+        <SkillCard>
+          <CardTitle>{t.about.frontendTitle}</CardTitle>
+          <SkillsContainer>
+            {t.about.frontendSkills.map((skill) => (
               <SkillBadge key={skill} name={skill} />
-            )
-          )}
-        </SkillsContainer>
-      </SkillCard>
+            ))}
+          </SkillsContainer>
+        </SkillCard>
 
-      <SkillCard>
-        <CardTitle>Backend & Databases</CardTitle>
-        <SkillsContainer>
-          {["Node.js", "C#.NET", "SQL", "Microsoft SQL Server", "JSON", "Red Gate Tools"].map(
-            (skill) => (
+        <SkillCard>
+          <CardTitle>{t.about.backendTitle}</CardTitle>
+          <SkillsContainer>
+            {t.about.backendSkills.map((skill) => (
               <SkillBadge key={skill} name={skill} />
-            )
-          )}
-        </SkillsContainer>
-      </SkillCard>
+            ))}
+          </SkillsContainer>
+        </SkillCard>
 
-      <SkillCard>
-        <CardTitle>Cloud & Tools</CardTitle>
-        <SkillsContainer>
-          {["AWS", "Git", "Figma", "Microsoft Office"].map((skill) => (
-            <SkillBadge key={skill} name={skill} />
-          ))}
-        </SkillsContainer>
-      </SkillCard>
+        <SkillCard>
+          <CardTitle>{t.about.cloudTitle}</CardTitle>
+          <SkillsContainer>
+            {t.about.cloudSkills.map((skill) => (
+              <SkillBadge key={skill} name={skill} />
+            ))}
+          </SkillsContainer>
+        </SkillCard>
 
-      <SkillCard>
-        <CardTitle>Methodologies</CardTitle>
-        <SkillsContainer>
-          {["Agile", "Full-Stack Development"].map((skill) => (
-            <SkillBadge key={skill} name={skill} />
-          ))}
-        </SkillsContainer>
-      </SkillCard>
-    </CardGrid>
+        <SkillCard>
+          <CardTitle>{t.about.methodologiesTitle}</CardTitle>
+          <SkillsContainer>
+            {t.about.methodologiesSkills.map((skill) => (
+              <SkillBadge key={skill} name={skill} />
+            ))}
+          </SkillsContainer>
+        </SkillCard>
+      </CardGrid>
 
-    <ResumeButton
-      href="/resume.pdf"
-      download
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Download My Latest Resume
-    </ResumeButton>
-  </Section>
-);
+      <ResumeButton
+        href="/resume.pdf"
+        download
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t.about.downloadResume}
+      </ResumeButton>
+    </Section>
+  );
+};

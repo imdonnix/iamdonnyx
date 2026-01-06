@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslations } from "../utils/translations/translations";
 
 const Section = styled.section`
   padding: 6rem 4rem;
@@ -35,14 +36,18 @@ const Card = styled.div`
   }
 `;
 
-export const Services: React.FC = () => (
-  <Section id="services">
-    <Title>My Services</Title>
-    <Grid>
-      <Card>Web Development</Card>
-      <Card>UI/UX Design</Card>
-      <Card>Consultation</Card>
-      <Card>Website Optimization</Card>
-    </Grid>
-  </Section>
-);
+export const Services: React.FC = () => {
+  const { t } = useTranslations();
+
+  return (
+    <Section id="services">
+      <Title>{t.services.title}</Title>
+      <Grid>
+        <Card>{t.services.webDevelopment}</Card>
+        <Card>{t.services.uiUxDesign}</Card>
+        <Card>{t.services.consultation}</Card>
+        <Card>{t.services.websiteOptimization}</Card>
+      </Grid>
+    </Section>
+  );
+};

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslations } from "../utils/translations/translations";
 
 const Section = styled.section`
   display: flex;
@@ -21,28 +22,31 @@ const Subtitle = styled.p`
   max-width: 650px;
 `;
 
-export const Hero: React.FC = () => (
-<Section>
-<Title>
-    I’m Donny, a{" "}
-    <span
-        style={{
+export const Hero: React.FC = () => {
+  const { t } = useTranslations();
+
+  return (
+    <Section>
+      <Title>
+        {t.hero.intro}{" "}
+        <span
+          style={{
             display: "inline-block",
             position: "relative",
             cursor: "pointer",
             transition: "color 0.3s",
-        }}
-        className="code-word"
-        onMouseEnter={e => {
+          }}
+          className="code-word"
+          onMouseEnter={(e) => {
             const word = e.currentTarget as HTMLElement;
             word.style.animation = "codePulse 0.6s";
             setTimeout(() => {
-                word.style.animation = "";
+              word.style.animation = "";
             }, 600);
-        }}
-    >
-        Code
-        <style>
+          }}
+        >
+          {t.hero.codeWord}
+          <style>
             {`
             .code-word:hover {
                 animation: codePulse 0.6s;
@@ -54,52 +58,52 @@ export const Hero: React.FC = () => (
                 100% { color: #0070f3; transform: scale(1); }
             }
             `}
-        </style>
-    </span>{" "}
-    <span
-        style={{
+          </style>
+        </span>{" "}
+        <span
+          style={{
             display: "inline-block",
             position: "relative",
             cursor: "pointer",
             transition: "color 0.3s",
-        }}
-        className="artist-word"
-        onMouseEnter={() => {
+          }}
+          className="artist-word"
+          onMouseEnter={() => {
             const word = document.querySelector(".artist-word") as HTMLElement;
             if (word) {
-                word.style.color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-                for (let i = 0; i < 10; i++) {
-                    const particle = document.createElement("span");
-                    const size = Math.random() * 8 + 4;
-                    const color = `hsl(${Math.random() * 360}, 80%, 60%)`;
-                    particle.style.position = "absolute";
-                    particle.style.left = "50%";
-                    particle.style.top = "50%";
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.borderRadius = "50%";
-                    particle.style.background = color;
-                    particle.style.pointerEvents = "none";
-                    particle.style.zIndex = "2";
-                    particle.style.transform = "translate(-50%, -50%)";
-                    particle.style.opacity = "1";
-                    particle.style.transition = "opacity 0.6s";
-                    const angle = (Math.PI * 2 * i) / 10;
-                    const distance = 40 + Math.random() * 20;
-                    setTimeout(() => {
-                        particle.style.transform = `translate(-50%, -50%) translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
-                        particle.style.opacity = "0";
-                    }, 10);
-                    setTimeout(() => {
-                        if (particle.parentNode) particle.parentNode.removeChild(particle);
-                    }, 700);
-                    word.appendChild(particle);
-                }
+              word.style.color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+              for (let i = 0; i < 10; i++) {
+                const particle = document.createElement("span");
+                const size = Math.random() * 8 + 4;
+                const color = `hsl(${Math.random() * 360}, 80%, 60%)`;
+                particle.style.position = "absolute";
+                particle.style.left = "50%";
+                particle.style.top = "50%";
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.borderRadius = "50%";
+                particle.style.background = color;
+                particle.style.pointerEvents = "none";
+                particle.style.zIndex = "2";
+                particle.style.transform = "translate(-50%, -50%)";
+                particle.style.opacity = "1";
+                particle.style.transition = "opacity 0.6s";
+                const angle = (Math.PI * 2 * i) / 10;
+                const distance = 40 + Math.random() * 20;
+                setTimeout(() => {
+                  particle.style.transform = `translate(-50%, -50%) translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+                  particle.style.opacity = "0";
+                }, 10);
+                setTimeout(() => {
+                  if (particle.parentNode) particle.parentNode.removeChild(particle);
+                }, 700);
+                word.appendChild(particle);
+              }
             }
-        }}
-    >
-        Artist
-        <style>
+          }}
+        >
+          {t.hero.artistWord}
+          <style>
             {`
             .artist-word:hover {
                 animation: bounce 0.5s;
@@ -112,12 +116,11 @@ export const Hero: React.FC = () => (
                 100% { transform: translateY(0); }
             }
             `}
-        </style>
-    </span>.
-</Title>
-<Subtitle>
-    I’m a software engineer passionate about building great products. I love capturing moments through photography and enjoy collecting unique toys in my free time.
-</Subtitle>
-</Section>
-
-);
+          </style>
+        </span>
+        .
+      </Title>
+      <Subtitle>{t.hero.description}</Subtitle>
+    </Section>
+  );
+};
