@@ -1,33 +1,13 @@
 import React from "react";
-import styled from "styled-components";
-import { useTranslations } from "../utils/translations/translations";
-
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-  padding: 0 4rem;
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  font-weight: 700;
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  max-width: 650px;
-`;
+import { useTranslations } from "../../utils/translations/translations";
+import "./Hero.scss";
 
 export const Hero: React.FC = () => {
   const { t } = useTranslations();
 
   return (
-    <Section>
-      <Title>
+    <section className="hero-section">
+      <h1 className="hero-title">
         {t.hero.intro}{" "}
         <span
           style={{
@@ -119,8 +99,8 @@ export const Hero: React.FC = () => {
           </style>
         </span>
         .
-      </Title>
-      <Subtitle>{t.hero.description}</Subtitle>
-    </Section>
+      </h1>
+      <p className="hero-subtitle">{t.hero.description}</p>
+    </section>
   );
 };

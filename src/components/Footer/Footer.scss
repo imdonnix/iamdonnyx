@@ -1,0 +1,61 @@
+/* ============================================
+   FOOTER.TSX STYLES
+   ============================================ */
+
+.footer-container {
+  padding: 2rem 4rem;
+  text-align: center;
+  background-color: #111;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 15px;
+}
+
+.icon-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 24px;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &.facebook:hover {
+    color: #1877f2;
+  }
+
+  &.twitter:hover {
+    color: #1da1f2;
+  }
+
+  &.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+  }
+
+  &.github:hover {
+    color: #6e5494;
+  }
+
+  &.linkedin:hover {
+    color: #0a66c2;
+  }
+}

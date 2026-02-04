@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Header } from "../components/Header";
-import { Hero } from "../components/Hero";
-import { Services } from "../components/Services";
-import { Portfolio } from "../components/Portfolio";
-import { About } from "../components/About";
-import { Contact } from "../components/Contact";
-import { Footer } from "../components/Footer";
+import { Header } from "../components/Header/Header";
+import { Hero } from "../components/Hero/Hero";
+import { Services } from "../components/Services/Services";
+import { Portfolio } from "../components/Portfolio/Portfolio";
+import { About } from "../components/About/About";
+import { Contact } from "../components/Contact/Contact";
+import { Footer } from "../components/Footer/Footer";
 import { useTranslations } from "../utils/translations/translations";
 
 export const Home: React.FC = () => {
@@ -53,9 +53,7 @@ export const Home: React.FC = () => {
                         animation: "bounce 1s infinite"
                     }}
                     aria-label={t.home.scrollToTopLabel}
-                >
-                    
-                </button>
+                />
             )}
             <style>
                 {`
