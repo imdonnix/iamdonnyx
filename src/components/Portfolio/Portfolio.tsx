@@ -40,6 +40,12 @@ const projects: Project[] = [
         fallback: "https://via.placeholder.com/220x160?text=GenWizUni",
         title: "GenWizard University - Accenture",
     },
+    {
+        img: require("../../pictures/Global Automation Website.png"),
+        alt: "Global Automation Website",
+        fallback: "https://via.placeholder.com/220x160?text=Global+Automation+Website",
+        title: "Global Automation Website",
+    },
 ];
 
 const Modal: React.FC<{
