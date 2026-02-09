@@ -7,6 +7,7 @@ import { About } from "../components/About/About";
 import { Contact } from "../components/Contact/Contact";
 import { Footer } from "../components/Footer/Footer";
 import { useTranslations } from "../utils/translations/translations";
+import { KeyboardArrowUp } from "@mui/icons-material";
 
 export const Home: React.FC = () => {
     const { t } = useTranslations();
@@ -47,13 +48,19 @@ export const Home: React.FC = () => {
                         borderRadius: "50%",
                         width: "48px",
                         height: "48px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
                         cursor: "pointer",
                         transition: "transform 0.3s",
-                        animation: "bounce 1s infinite"
+                        animation: "bounce 1s infinite",
+                        padding: 0
                     }}
                     aria-label={t.home.scrollToTopLabel}
-                />
+                >
+                    <KeyboardArrowUp sx={{ fontSize: "1.5rem" }} />
+                </button>
             )}
             <style>
                 {`

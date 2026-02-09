@@ -4,7 +4,9 @@ export const jaTranslations = {
         services: 'サービス',
         portfolio: 'ポートフォリオ',
         about: '私について',
-        contact: 'お問い合わせ'
+        contact: 'お問い合わせ',
+        english: 'English',
+        japanese: '日本語'
     },
     hero: {
         intro: '私はドニー、',

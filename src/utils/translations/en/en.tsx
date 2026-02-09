@@ -4,7 +4,9 @@ export const enTranslations = {
         services: 'Services',
         portfolio: 'Portfolio',
         about: 'About',
-        contact: 'Contact'
+        contact: 'Contact',
+        english: 'English',
+        japanese: '日本語'
     },
     hero: {
         intro: "I'm Donny, a",

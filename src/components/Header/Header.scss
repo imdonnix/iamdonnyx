@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 nav {
@@ -13,6 +14,11 @@ nav {
   align-items: center;
   background-color: #fff;
   border-bottom: 1px solid #eee;
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 }
 
 .logo {
@@ -34,6 +40,10 @@ nav {
     &:hover {
       color: #0070f3;
     }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 }
 
@@ -106,5 +116,105 @@ nav {
 
   &:last-child {
     border-radius: 0 0 8px 8px;
+  }
+}
+
+.hamburger-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: inherit;
+  transition: color 0.2s ease;
+
+  svg {
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    color: #0070f3;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  flex-direction: column;
+  gap: 0;
+  padding: 1rem;
+  z-index: 999;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+
+  &.open {
+    display: flex;
+  }
+
+  &.closed {
+    display: none;
+  }
+
+  a {
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+.mobile-language-toggle {
+  display: flex;
+  gap: 0;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+
+  .language-option {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: center;
+    color: inherit;
+    transition: background 0.2s ease;
+    border-right: 1px solid #eee;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      background: #f0f0f0;
+    }
+
+    &.active {
+      background: #f0f0f0;
+    }
   }
 }

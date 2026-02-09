@@ -9,6 +9,10 @@
   align-items: flex-start;
   height: 100vh;
   padding: 0 4rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 }
 
 .hero-title {
