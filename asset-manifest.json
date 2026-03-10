@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/iamdonnyx/static/css/main.bd61c785.css",
-    "main.js": "/iamdonnyx/static/js/main.8d41aa12.js",
+    "main.js": "/iamdonnyx/static/js/main.83409d2e.js",
     "static/js/453.58e86bce.chunk.js": "/iamdonnyx/static/js/453.58e86bce.chunk.js",
     "static/media/Global Automation Website.png": "/iamdonnyx/static/media/Global Automation Website.a62c28c7b44c5851df57.png",
     "static/media/GenAI.JPG": "/iamdonnyx/static/media/GenAI.68631356bf5342e5260d.JPG",
@@ -10,11 +10,11 @@
     "static/media/ImageNotAvailable.png": "/iamdonnyx/static/media/ImageNotAvailable.eeaa93bcc65e2fdbef8a.png",
     "index.html": "/iamdonnyx/index.html",
     "main.bd61c785.css.map": "/iamdonnyx/static/css/main.bd61c785.css.map",
-    "main.8d41aa12.js.map": "/iamdonnyx/static/js/main.8d41aa12.js.map",
+    "main.83409d2e.js.map": "/iamdonnyx/static/js/main.83409d2e.js.map",
     "453.58e86bce.chunk.js.map": "/iamdonnyx/static/js/453.58e86bce.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd61c785.css",
-    "static/js/main.8d41aa12.js"
+    "static/js/main.83409d2e.js"
   ]
 }
