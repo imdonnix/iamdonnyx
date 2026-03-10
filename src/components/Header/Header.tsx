@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
     <header>
       <style>{`html { scroll-behavior: smooth; }`}</style>
       <nav>
-        <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
+        <a href="/" onClick={(e) => { e.preventDefault(); window.location.reload(); }} style={{ textDecoration: "none", color: "inherit" }}>
           <div className="logo">{t.header.Donny}</div>
         </a>
         <div className="menu">
