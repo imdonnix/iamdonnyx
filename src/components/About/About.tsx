@@ -54,8 +54,8 @@ export const About: React.FC = () => {
       </div>
 
       <a
-        href="/resume.pdf"
-        download
+        href={`${process.env.PUBLIC_URL}/resume.pdf`}
+        download="resume.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="resume-button"
