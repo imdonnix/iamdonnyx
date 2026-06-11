@@ -1,44 +1,84 @@
 /* ============================================
-   HEADER.TSX STYLES
+   HEADER.SCSS — Dark sticky nav
    ============================================ */
 
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
 }
 
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 2rem 4rem;
   align-items: center;
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-  position: relative;
+  height: 100%;
+  padding: 0 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
-    padding: 2rem 1rem;
+    padding: 0 1.5rem;
   }
 }
 
+/* ── Logo ──────────────────────────────────── */
 .logo {
+  font-family: var(--mono);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  user-select: none;
 }
 
+.logo-bracket {
+  color: var(--accent);
+}
+
+/* ── Desktop Menu ──────────────────────────── */
 .menu {
   display: flex;
-  gap: 2rem;
+  gap: 2.25rem;
   align-items: center;
 
   a {
-    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
     text-decoration: none;
-    color: inherit;
-    transition: color 0.2s ease;
+    letter-spacing: 0.3px;
+    position: relative;
+    transition: color var(--transition);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
 
     &:hover {
-      color: #0070f3;
+      color: var(--text-primary);
+
+      &::after {
+        width: 100%;
+      }
     }
   }
 
@@ -47,139 +87,133 @@ nav {
   }
 }
 
+/* ── Language Toggle ──────────────────────── */
 .language-toggle {
   position: relative;
 }
 
 .language-button {
   background: none;
-  border: none;
+  border: 1px solid var(--border);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.35rem 0.45rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: inherit;
-  transition: color 0.2s ease;
+  color: var(--text-secondary);
+  border-radius: var(--radius);
+  transition: all var(--transition);
 
   &:hover {
-    color: #0070f3;
+    color: var(--accent);
+    border-color: rgba(0, 217, 255, 0.4);
+    background: var(--accent-dim);
   }
 
   svg {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    display: block;
   }
 }
 
 .language-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.6rem);
   right: 0;
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 0.5rem;
-  min-width: 150px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  min-width: 128px;
   z-index: 1000;
+  overflow: hidden;
 
-  &.open {
-    display: block;
-  }
-
-  &.closed {
-    display: none;
-  }
+  &.open  { display: block; }
+  &.closed { display: none; }
 }
 
 .language-option {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 1rem;
   border: none;
   background: transparent;
   cursor: pointer;
   text-align: left;
-  color: inherit;
-  transition: background 0.2s ease;
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+  transition: all var(--transition);
 
   &:hover {
-    background: #f0f0f0;
+    background: var(--accent-dim);
+    color: var(--accent);
   }
 
   &.active {
-    background: #f0f0f0;
-  }
-
-  &:first-child {
-    border-radius: 8px 8px 0 0;
-  }
-
-  &:last-child {
-    border-radius: 0 0 8px 8px;
+    color: var(--accent);
+    background: var(--accent-dim);
   }
 }
 
+/* ── Hamburger ────────────────────────────── */
 .hamburger-button {
   display: none;
   background: none;
-  border: none;
+  border: 1px solid var(--border);
   cursor: pointer;
-  padding: 0.5rem;
-  color: inherit;
-  transition: color 0.2s ease;
+  padding: 0.35rem 0.45rem;
+  color: var(--text-secondary);
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  align-items: center;
+  justify-content: center;
 
   svg {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    display: block;
   }
 
   &:hover {
-    color: #0070f3;
+    color: var(--accent);
+    border-color: rgba(0, 217, 255, 0.4);
   }
 
   @media (max-width: 768px) {
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }
 
+/* ── Mobile Menu ───────────────────────────── */
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 80px;
+  top: var(--header-height);
   left: 0;
   right: 0;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background: rgba(10, 10, 10, 0.97);
+  border-bottom: 1px solid var(--border);
   flex-direction: column;
-  gap: 0;
-  padding: 1rem;
-  z-index: 999;
-  max-height: calc(100vh - 80px);
+  padding: 0.4rem 0 0.8rem;
+  z-index: 99;
+  backdrop-filter: blur(14px);
+  max-height: calc(100vh - var(--header-height));
   overflow-y: auto;
 
-  &.open {
-    display: flex;
-  }
-
-  &.closed {
-    display: none;
-  }
+  &.open  { display: flex; }
+  &.closed { display: none; }
 
   a {
-    padding: 1rem;
+    padding: 0.85rem 1.5rem;
     text-decoration: none;
-    color: inherit;
-    border-bottom: 1px solid #eee;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all var(--transition);
 
     &:hover {
-      background: #f0f0f0;
-    }
-
-    &:last-of-type {
-      border-bottom: none;
+      color: var(--accent);
+      background: var(--accent-dim);
     }
   }
 
@@ -188,33 +222,34 @@ nav {
   }
 }
 
+/* ── Mobile Language Row ──────────────────── */
 .mobile-language-toggle {
   display: flex;
-  gap: 0;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem 0;
 
   .language-option {
     flex: 1;
-    padding: 0.75rem 1rem;
-    border: none;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     background: transparent;
     cursor: pointer;
     text-align: center;
-    color: inherit;
-    transition: background 0.2s ease;
-    border-right: 1px solid #eee;
-
-    &:last-child {
-      border-right: none;
-    }
+    color: var(--text-secondary);
+    font-size: 0.83rem;
+    transition: all var(--transition);
 
     &:hover {
-      background: #f0f0f0;
+      color: var(--accent);
+      border-color: rgba(0, 217, 255, 0.4);
+      background: var(--accent-dim);
     }
 
     &.active {
-      background: #f0f0f0;
+      color: var(--accent);
+      border-color: rgba(0, 217, 255, 0.4);
+      background: var(--accent-dim);
     }
   }
 }

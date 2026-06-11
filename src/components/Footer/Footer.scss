@@ -1,61 +1,71 @@
 /* ============================================
-   FOOTER.TSX STYLES
+   FOOTER.SCSS — Minimal dark
    ============================================ */
 
 .footer-container {
-  padding: 2rem 4rem;
-  text-align: center;
-  background-color: #111;
-  color: #fff;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  padding: 3rem 4rem;
 
   @media (max-width: 768px) {
-    padding: 2rem 1rem;
+    padding: 2.5rem 1.5rem;
   }
 }
 
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ── "Built with" line ───────────────────── */
+.footer-built {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.footer-tech {
+  color: var(--accent);
+}
+
+/* ── Social icons ─────────────────────────── */
 .social-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-  gap: 15px;
+  gap: 0.6rem;
 }
 
 .icon-link {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 46px;
-  height: 44px;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 24px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.2s ease;
 
   &:hover {
-    transform: scale(1.15);
+    transform: translateY(-2px);
   }
 
-  &.facebook:hover {
-    color: #1877f2;
-  }
+  &.github:hover    { color: #f0f0f0;  border-color: rgba(240,240,240,0.35); }
+  &.linkedin:hover  { color: #0a66c2;  border-color: rgba(10,102,194,0.45); }
+  &.twitter:hover   { color: #1da1f2;  border-color: rgba(29,161,242,0.45); }
+  &.instagram:hover { color: #e1306c;  border-color: rgba(225,48,108,0.45); }
+  &.facebook:hover  { color: #1877f2;  border-color: rgba(24,119,242,0.45); }
+}
 
-  &.twitter:hover {
-    color: #1da1f2;
-  }
-
-  &.instagram:hover {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    color: white;
-  }
-
-  &.github:hover {
-    color: #6e5494;
-  }
-
-  &.linkedin:hover {
-    color: #0a66c2;
-  }
+/* ── Copyright ────────────────────────────── */
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }

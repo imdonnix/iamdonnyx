@@ -10,66 +10,69 @@ import { useTranslations } from "../utils/translations/translations";
 import { KeyboardArrowUp } from "@mui/icons-material";
 
 export const Home: React.FC = () => {
-    const { t } = useTranslations();
-    const [showButton, setShowButton] = useState(false);
+  const { t } = useTranslations();
+  const [showButton, setShowButton] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setShowButton(window.scrollY > 300);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.scrollY > 300);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-        <>
-            <Header />
-            <Hero />
-            <Services />
-            <Portfolio />
-            <About />
-            <Contact />
-            <Footer />
-            {showButton && (
-                <button
-                    onClick={scrollToTop}
-                    style={{
-                        position: "fixed",
-                        right: "2rem",
-                        bottom: "2rem",
-                        zIndex: 1000,
-                        background: "#007bff",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "50%",
-                        width: "48px",
-                        height: "48px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-                        cursor: "pointer",
-                        transition: "transform 0.3s",
-                        animation: "bounce 1s infinite",
-                        padding: 0
-                    }}
-                    aria-label={t.home.scrollToTopLabel}
-                >
-                    <KeyboardArrowUp sx={{ fontSize: "1.5rem" }} />
-                </button>
-            )}
-            <style>
-                {`
-                    @keyframes bounce {
-                        0%, 100% { transform: translateY(0); }
-                        50% { transform: translateY(-10px); }
-                    }
-                `}
-            </style>
-        </>
-    );
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <Header />
+      <Hero />
+      <Services />
+      <Portfolio />
+      <About />
+      <Contact />
+      <Footer />
+      {showButton && (
+        <button
+          onClick={scrollToTop}
+          style={{
+            position: "fixed",
+            right: "1.5rem",
+            bottom: "1.5rem",
+            zIndex: 1000,
+            background: "var(--bg-elevated)",
+            color: "var(--accent)",
+            border: "1px solid rgba(0, 217, 255, 0.28)",
+            borderRadius: "50%",
+            width: "42px",
+            height: "42px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.4)",
+            padding: 0,
+          }}
+          aria-label={t.home.scrollToTopLabel}
+          onMouseEnter={(e) => {
+            const btn = e.currentTarget as HTMLButtonElement;
+            btn.style.transform = "translateY(-3px)";
+            btn.style.boxShadow = "0 8px 22px rgba(0, 217, 255, 0.18)";
+            btn.style.borderColor = "rgba(0, 217, 255, 0.55)";
+          }}
+          onMouseLeave={(e) => {
+            const btn = e.currentTarget as HTMLButtonElement;
+            btn.style.transform = "translateY(0)";
+            btn.style.boxShadow = "0 4px 16px rgba(0, 0, 0, 0.4)";
+            btn.style.borderColor = "rgba(0, 217, 255, 0.28)";
+          }}
+        >
+          <KeyboardArrowUp sx={{ fontSize: "1.2rem" }} />
+        </button>
+      )}
+    </>
+  );
 };

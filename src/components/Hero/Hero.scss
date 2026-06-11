@@ -1,5 +1,5 @@
 /* ============================================
-   HERO.TSX STYLES
+   HERO.SCSS — Terminal-style intro
    ============================================ */
 
 .hero-section {
@@ -7,21 +7,134 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: 100vh;
-  padding: 0 4rem;
+  min-height: 100vh;
+  padding: 8rem 4rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
-    padding: 0 1rem;
+    padding: 7rem 1.5rem 3.5rem;
   }
 }
 
-.hero-title {
-  font-size: 3rem;
-  font-weight: 700;
+/* ── Eyebrow ─────────────────────────────── */
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.04em;
+
+  &::before {
+    content: '> ';
+    opacity: 0.4;
+  }
 }
 
+/* ── Title ────────────────────────────────── */
+.hero-title {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* Interactive words */
+.code-word {
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-block;
+  font-style: italic;
+  transition: opacity var(--transition);
+
+  &:hover {
+    animation: codePulse 0.55s forwards;
+  }
+}
+
+.artist-word {
+  cursor: pointer;
+  display: inline-block;
+  transition: color var(--transition);
+
+  &:hover {
+    color: #a855f7;
+    animation: softBounce 0.55s forwards;
+  }
+}
+
+@keyframes codePulse {
+  0%   { color: var(--accent);  transform: scale(1);    }
+  40%  { color: #22c55e;        transform: scale(1.07); }
+  100% { color: var(--accent);  transform: scale(1);    }
+}
+
+@keyframes softBounce {
+  0%   { transform: translateY(0);   }
+  30%  { transform: translateY(-9px);}
+  60%  { transform: translateY(0);   }
+  80%  { transform: translateY(-4px);}
+  100% { transform: translateY(0);   }
+}
+
+/* ── Subtitle ─────────────────────────────── */
 .hero-subtitle {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  max-width: 650px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 540px;
+  line-height: 1.8;
+  margin-bottom: 2.75rem;
+}
+
+/* ── CTA Buttons ─────────────────────────── */
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  background: var(--accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.2px;
+
+  &:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 217, 255, 0.22);
+  }
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.2px;
+
+  &:hover {
+    border-color: rgba(0, 217, 255, 0.5);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
 }

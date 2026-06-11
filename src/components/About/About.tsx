@@ -11,57 +11,69 @@ export const About: React.FC = () => {
 
   return (
     <section id="about" className="about-section">
-      <h2 className="about-title">{t.about.title}</h2>
-      <p className="about-text">{t.about.description}</p>
+      <div className="about-inner">
+        {/* Bio */}
+        <div className="about-bio">
+          <span className="section-label">Background</span>
+          <h2 className="about-title">{t.about.title}</h2>
+          <p className="about-text">{t.about.description}</p>
+        </div>
 
-      <h2 className="about-title">{t.about.skillsTitle}</h2>
-      <div className="card-grid">
-        <div className="skill-card">
-          <h3 className="card-title">{t.about.frontendTitle}</h3>
-          <div className="skills-container">
-            {t.about.frontendSkills.map((skill) => (
-              <SkillBadge key={skill} name={skill} />
-            ))}
+        {/* Skills */}
+        <div className="about-skills-block">
+          <span className="section-label">Tech Stack</span>
+          <h2 className="skills-heading">{t.about.skillsTitle}</h2>
+
+          <div className="card-grid">
+            <div className="skill-card">
+              <h3 className="card-title">{t.about.frontendTitle}</h3>
+              <div className="skills-container">
+                {t.about.frontendSkills.map((skill) => (
+                  <SkillBadge key={skill} name={skill} />
+                ))}
+              </div>
+            </div>
+
+            <div className="skill-card">
+              <h3 className="card-title">{t.about.backendTitle}</h3>
+              <div className="skills-container">
+                {t.about.backendSkills.map((skill) => (
+                  <SkillBadge key={skill} name={skill} />
+                ))}
+              </div>
+            </div>
+
+            <div className="skill-card">
+              <h3 className="card-title">{t.about.cloudTitle}</h3>
+              <div className="skills-container">
+                {t.about.cloudSkills.map((skill) => (
+                  <SkillBadge key={skill} name={skill} />
+                ))}
+              </div>
+            </div>
+
+            <div className="skill-card">
+              <h3 className="card-title">{t.about.methodologiesTitle}</h3>
+              <div className="skills-container">
+                {t.about.methodologiesSkills.map((skill) => (
+                  <SkillBadge key={skill} name={skill} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="skill-card">
-          <h3 className="card-title">{t.about.backendTitle}</h3>
-          <div className="skills-container">
-            {t.about.backendSkills.map((skill) => (
-              <SkillBadge key={skill} name={skill} />
-            ))}
-          </div>
-        </div>
-
-        <div className="skill-card">
-          <h3 className="card-title">{t.about.cloudTitle}</h3>
-          <div className="skills-container">
-            {t.about.cloudSkills.map((skill) => (
-              <SkillBadge key={skill} name={skill} />
-            ))}
-          </div>
-        </div>
-
-        <div className="skill-card">
-          <h3 className="card-title">{t.about.methodologiesTitle}</h3>
-          <div className="skills-container">
-            {t.about.methodologiesSkills.map((skill) => (
-              <SkillBadge key={skill} name={skill} />
-            ))}
-          </div>
-        </div>
+        {/* Resume CTA */}
+        <a
+          href={`${process.env.PUBLIC_URL}/resume.pdf`}
+          download="resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="resume-button"
+        >
+          {t.about.downloadResume}
+        </a>
       </div>
-
-      <a
-        href={`${process.env.PUBLIC_URL}/resume.pdf`}
-        download="resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="resume-button"
-      >
-        {t.about.downloadResume}
-      </a>
     </section>
   );
 };

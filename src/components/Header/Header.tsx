@@ -7,8 +7,11 @@ export const Header: React.FC = () => {
   const { t, currentLanguage, setLanguage } = useTranslations();
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string,
+  ) => {
     e.preventDefault();
     const el = document.querySelector(id);
     if (el) {
@@ -27,16 +30,34 @@ export const Header: React.FC = () => {
 
   return (
     <header>
-      <style>{`html { scroll-behavior: smooth; }`}</style>
       <nav>
-        <a href="/" onClick={(e) => { e.preventDefault(); window.location.reload(); }} style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="logo">{t.header.Donny}</div>
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.reload();
+          }}
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <div className="logo">
+            <span className="logo-bracket">&lt;</span>
+            Donny
+            <span className="logo-bracket"> /&gt;</span>
+          </div>
         </a>
         <div className="menu">
-          <a href="#services" onClick={(e) => handleScroll(e, "#services")}>{t.header.services}</a>
-          <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")}>{t.header.portfolio}</a>
-          <a href="#about" onClick={(e) => handleScroll(e, "#about")}>{t.header.about}</a>
-          <a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>{t.header.contact}</a>
+          <a href="#services" onClick={(e) => handleScroll(e, "#services")}>
+            {t.header.services}
+          </a>
+          <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")}>
+            {t.header.portfolio}
+          </a>
+          <a href="#about" onClick={(e) => handleScroll(e, "#about")}>
+            {t.header.about}
+          </a>
+          <a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>
+            {t.header.contact}
+          </a>
           <div className="language-toggle">
             <button
               className="language-button"
@@ -45,7 +66,9 @@ export const Header: React.FC = () => {
             >
               <Language />
             </button>
-            <div className={`language-dropdown ${isLanguageDropdownOpen ? "open" : "closed"}`}>
+            <div
+              className={`language-dropdown ${isLanguageDropdownOpen ? "open" : "closed"}`}
+            >
               <button
                 className={`language-option ${currentLanguage === "en" ? "active" : ""}`}
                 onClick={() => handleLanguageChange("en")}
@@ -61,8 +84,8 @@ export const Header: React.FC = () => {
             </div>
           </div>
         </div>
-        <button 
-          className="hamburger-button" 
+        <button
+          className="hamburger-button"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -70,28 +93,40 @@ export const Header: React.FC = () => {
         </button>
       </nav>
       <div className={`mobile-menu ${isMobileMenuOpen ? "open" : "closed"}`}>
-        <a href="#services" onClick={(e) => {
-          handleScroll(e, "#services");
-          closeMobileMenu();
-        }}>
+        <a
+          href="#services"
+          onClick={(e) => {
+            handleScroll(e, "#services");
+            closeMobileMenu();
+          }}
+        >
           {t.header.services}
         </a>
-        <a href="#portfolio" onClick={(e) => {
-          handleScroll(e, "#portfolio");
-          closeMobileMenu();
-        }}>
+        <a
+          href="#portfolio"
+          onClick={(e) => {
+            handleScroll(e, "#portfolio");
+            closeMobileMenu();
+          }}
+        >
           {t.header.portfolio}
         </a>
-        <a href="#about" onClick={(e) => {
-          handleScroll(e, "#about");
-          closeMobileMenu();
-        }}>
+        <a
+          href="#about"
+          onClick={(e) => {
+            handleScroll(e, "#about");
+            closeMobileMenu();
+          }}
+        >
           {t.header.about}
         </a>
-        <a href="#contact" onClick={(e) => {
-          handleScroll(e, "#contact");
-          closeMobileMenu();
-        }}>
+        <a
+          href="#contact"
+          onClick={(e) => {
+            handleScroll(e, "#contact");
+            closeMobileMenu();
+          }}
+        >
           {t.header.contact}
         </a>
         <div className="mobile-language-toggle">
