@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "../../utils/translations/translations";
 import { Language, Menu, Close } from "@mui/icons-material";
+// @ts-ignore: SCSS module import without type declarations
 import "./Header.scss";
 
 export const Header: React.FC = () => {
